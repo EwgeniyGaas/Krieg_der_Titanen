@@ -8,6 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from config import login, password
 from arena import Arena  # пользовательский тип данных
+from cave import Cave    # пользовательский тип данных
 
 link = "https://tiwar.ru/?sign_in=1"
 
@@ -28,12 +29,24 @@ try:
     enter_button.click()
     sleep(2)
     
-    # Проведение боёв на арене
-    
+    # class Arena. Проведение боёв на арене (выбрать один класс, другие закомментить)
+    '''
     arena = Arena(browser)
     arena.fight()
+    '''
+    
+    # class Cave. Поиск ресурсов в пещере (выбрать один класс, другие закомментить)
+    
+    cave = Cave(browser)
+    cave.mining()
     
 finally:
     sleep(10)
     browser.quit()
+
+
+
+
+
+
 
