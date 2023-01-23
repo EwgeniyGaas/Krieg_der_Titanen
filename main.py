@@ -6,9 +6,8 @@
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
 from config import login, password
-
+from arena import Arena  # пользовательский тип данных
 
 link = "https://tiwar.ru/?sign_in=1"
 
@@ -27,26 +26,14 @@ try:
     enter_button = browser.find_element(By.CSS_SELECTOR, "[value='Войти']")
     enter_button.send_keys('Войти')
     enter_button.click()
-    sleep(5)
-    
-    # проведение боёв на арене
-    
-    arena = browser.find_element(By.CSS_SELECTOR, "[href='/arena/']")
-    arena.click()
-
     sleep(2)
-    raw_indicators = browser.find_element(By.XPATH, "//span[@class='bl rght nwr']")
-    indicators = list(raw_indicators.text.split())
-    print(f"\n{indicators}\n")                        #  ВРЕМЕННО
-    health = int(indicators[0])
-    energie = int(indicators[2])
-    counter = energie // 50
     
-    for i in range(counter):
-        button = browser.find_element(By.XPATH, "//a[contains(@href, '/arena/attack/')]")
-        sleep(2)
-        button.click()
+    # Проведение боёв на арене
+    
+    arena = Arena(browser)
+    arena.fight()
     
 finally:
     sleep(10)
     browser.quit()
+
