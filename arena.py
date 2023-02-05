@@ -25,6 +25,8 @@ class Arena:
         sleep(1)
         
         while True:
+            now = datetime.today()                      #  ВРЕМЕННО
+            print(f"\nFighting started in {now}\n")                      #  ВРЕМЕННО
             self.attack() # атака для обнуления страницы после ожидания, чтобы получить актуальные здоровье и энергию
             raw_indicators = self.browser.find_element(By.XPATH, "//span[@class='bl rght nwr']")
             indicators = list(raw_indicators.text.split())
@@ -36,7 +38,7 @@ class Arena:
             for i in range(counter):
                 self.attack()
                 
-            now = datetime.today()
-            print(f"\n{now} - проведено {counter} боёв]\n")
+            now = datetime.today()                      #  ВРЕМЕННО
+            print(f"\n{now} - проведено {counter} боёв]\n")                      #  ВРЕМЕННО
             sleep(2100)  #  wait 35 minutes
 

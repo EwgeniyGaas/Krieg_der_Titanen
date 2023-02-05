@@ -37,7 +37,10 @@ try:
     
     # class Cave. Поиск ресурсов в пещере (выбрать один класс, другие закомментить)
     
-    cave = Cave(browser)
+    counter = 4000  # counter / 4 = X mining iteration, but less than X, because there are Monsters
+                    # counter = 4000 worked 1 hour 50 minuten, spent 68.5 millions silver, mined around 60 units every kind
+    
+    cave = Cave(browser, counter)
     cave.mining()
     
 finally:
